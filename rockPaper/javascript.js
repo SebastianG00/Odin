@@ -29,35 +29,82 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
+const rock = document.querySelector('.button1');
+const paper = document.querySelector(".button2");
+const scissors = document.querySelector(".button3");
+
 function playRound(humanChoice, computerChoice) {
-    humanChoice = getHumanChoice();
+
+    let resulty = "";
+    
     computerChoice = getComputerChoice();
 
     if (humanChoice == computerChoice) {
-        console.log("Tie!");
+        resulty = "Tie!";
+        //console.log("Tie!");
 
     } else if (humanChoice == "rock" && computerChoice == "paper") {
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
+        resulty = `You Lose! ${computerChoice} beats ${humanChoice}`;
+        //console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     } else if (humanChoice == "rock" && computerChoice == "scissors") {
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
+        resulty = `You Win! ${humanChoice} beats ${computerChoice}`;
+        //console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
+        resulty = `You Lose! ${computerChoice} beats ${humanChoice}`;
+        //console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
+        resulty = `You Win! ${humanChoice} beats ${computerChoice}`;
+        //console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
     else if (humanChoice == "scissors" && computerChoice == "rock") {
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
+        resulty = `You Lose! ${computerChoice} beats ${humanChoice}`;
+        //console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
     }
     else if (humanChoice == "scissors" && computerChoice == "paper") {
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
+        resulty= `You Win! ${humanChoice} beats ${computerChoice}`;
+        //console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
         humanScore++;
     }
 
-    console.log(`Current-Score: Human Score:${humanScore} - ComputerScore:${computerScore}`);
+    result.textContent = resulty;
+    score.textContent = `Current-Score: Human Score:${humanScore} - ComputerScore:${computerScore}`;
+
+    //console.log(`Current-Score: Human Score:${humanScore} - ComputerScore:${computerScore}`);
 }
+
+
+
+
+
+
+rock.addEventListener('click', () =>playRound('rock')); 
+paper.addEventListener('click', () =>playRound('paper')); 
+scissors.addEventListener('click', () =>playRound('scissors')); 
+
+//Create Results and Scoare
+
+const result = document.createElement("div")
+result.id = "result";
+result.textContent = "I exists";
+
+const score = document.createElement("div")
+score.id = "score";
+score.textContent = "score also exists";
+
+const classButtons = document.querySelector(".buttons");
+
+classButtons.appendChild(result);
+classButtons.appendChild(score);
+
+
+
+
+
+
+
